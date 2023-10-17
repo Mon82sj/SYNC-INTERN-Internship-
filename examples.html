@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+           html{
+                background-image:url(bg-music.jpeg);
+                background-repeat: no-repeat;
+                background-size: cover;
+
+            }
+            #currentTime,#totalTime{
+                color:white;
+                font-size: larger;
+            }
+            h1{
+                font-size: 60px;
+                text-align: center;
+
+                color:white;
+                animation: new 8s ease infinite;
+            }
+            @keyframes new {
+                0%{
+                    opacity: 0;
+                }
+                50%{
+                    opacity:.7;
+                }
+                100%{
+                    opacity:1;
+                }
+            }
+            button,input{
+                -webkit-background-clip: text;
+                background-color: transparent;
+                background-clip:text;
+                border:none;
+                padding:20px;
+                color:white;
+                text-transform: uppercase;
+                font-size: larger;
+            }
+            button:hover{
+                box-shadow: 5px 5px 30px white;
+            }
+            #seekbar{
+                background-color: azure;
+            }
+            audio{
+                margin-left: auto;
+                margin-right: auto;
+            }
+    </style>
+    <title>Music Player</title>
+</head>
+<body>
+    <h1>MELODY.......</h1><br><br><br>
+    <center><tr>
+    <td><audio id="musicPlayer" controls><source src="Anbil-Avan.mp3" type="audio/mpeg"></audio></td>
+    <td><div><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div></td>
+    </tr></table><br>
+    <table><tr>
+    <td><button onclick="playMusic()">Play</button></td>
+    <td><button onclick="pauseMusic()">Pause</button></td></tr><br>
+        <tr>
+    <td><input type="file" id="songInput" accept="audio/*"></td>
+    <td><button onclick="addSong()">Add Song</button></td>
+    <td><input type="range" id="seekBar" min="0" value="0"></td></tr>
+    <br></table><br>
+    <button><a href="music-webs.html" style="text-decoration: none;color:white" >click here to see the playlist</a></button>
+    </center>
+
+    <script>
+        const musicPlayer = document.getElementById('musicPlayer');
+        const songInput = document.getElementById('songInput');
+        const seekBar = document.getElementById('seekBar');
+        const currentTime = document.getElementById('currentTime');
+        const totalTime = document.getElementById('totalTime');
+
+        // Play the music
+        function playMusic() {
+            musicPlayer.play();
+        }
+
+        // Pause the music
+        function pauseMusic() {
+            musicPlayer.pause();
+        }
+
+        // Add a new song
+        function addSong() {
+            const file = songInput.files[0];
+            if (file) {
+                const source = document.createElement('source');
+                source.src = URL.createObjectURL(file);
+                source.type = 'audio/mpeg';
+                musicPlayer.appendChild(source);
+            }
+        }
+
+        // Update the seek bar and time display as the song plays
+        musicPlayer.addEventListener('timeupdate', function() {
+            const currentTimeInSeconds = Math.floor(musicPlayer.currentTime);
+            const durationInSeconds = Math.floor(musicPlayer.duration);
+            const currentMinutes = Math.floor(currentTimeInSeconds / 60);
+            const currentSeconds = currentTimeInSeconds % 60;
+            const durationMinutes = Math.floor(durationInSeconds / 60);
+            const durationSeconds = durationInSeconds % 60;
+
+            seekBar.value = currentTimeInSeconds;
+            currentTime.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
+            totalTime.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
+        });
+
+        // Seek to a specific time when the user interacts with the seek bar
+        seekBar.addEventListener('input', function() {
+            musicPlayer.currentTime = seekBar.value;
+        });
+    </script>
+</body>
+</html>

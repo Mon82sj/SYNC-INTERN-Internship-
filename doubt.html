@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Ask Doubt</title>
+        <link rel="icon" href="icons8-infinity-96.png" type="image/x-icon">
+        <style>
+        input{
+            padding:10px;
+            width:50%;
+            margin-bottom: 14px;
+            border:none;
+            box-shadow: 1px 1px 10px grey;
+            border-radius: 10px;
+        }
+        input::placeholder{
+            color:#94A684;
+            text-transform: uppercase;
+        }input:focus{
+            background-color: #94A684;
+            color:white;
+        }
+        h3{
+            text-transform: uppercase;
+            padding: 40px;    
+            text-align: center;
+            background-color:#94A684;
+            width:100%;
+            color:white;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button{
+            padding:30px;
+            padding-top: 15px;
+            padding-bottom: 15px;;
+            background-color:#94A684 ;
+            color:white;
+            border:none;
+            border-radius: 10px;
+            margin-left: 14px;
+            margin-right: 14px;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-top: 20px;
+            margin-bottom:15px;;
+        }
+        p{
+            color:#94A684;
+            font-size: larger;
+            padding:5px;
+            text-align:bottom left;
+            text-shadow: 2px 2px 10px grey;
+        }
+        .n{
+
+            box-shadow: 3px 3px 15px grey;
+        }
+        </style>
+        <script>
+            function press(){
+            var mail=document.getElementById("mail").value;
+            var doubt=document.getElementById("doubt").value;
+            document.getElementById("udoubt").innerHTML=mail+"  :   "+ doubt;}
+        </script>
+    </head>
+    <body>
+        <div>
+            <h3>If you have any doubts related to the course, ask here 👇 our team will help you shortly</h3>
+            <div>
+                <div> 
+                    <input type="mail" id="mail"  placeholder="Enter your Mail ID">
+                    <input type="text" id="doubt" placeholder="Enter You doubts here">
+                    <button onclick="press()">SUBMIT</button>
+                </div>
+            </div>
+            <div>
+                <div class="n">
+                    <p id="umail"></p>
+                    <p id="udoubt"></p>
+                </div>
+            </div>
+        </div>    
+    </body>
+</html>

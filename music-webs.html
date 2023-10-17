@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Melody...</title>
+        <style>
+            html{
+                background-image:url(bg-music.jpeg);
+                background-repeat: no-repeat;
+                background-size: cover;
+                color:white;
+                font-size: larger;
+                text-align: center;
+                font-weight: bolder;
+                text-transform: uppercase;
+                
+            }
+            div{
+                background-repeat: no-repeat;
+                background-size:contain;
+                width:400px;height:350px;
+                background-position: center;
+                background-image:url(rb.png);
+                padding:70px;
+                padding-right:80px;
+            }
+            button{
+                margin-top: 200px;
+                border:none;
+                padding:19px;
+                position: inherit;
+                color:white;
+                font-size: 20px;
+                background-color: transparent;
+            }
+            button:hover{
+                box-shadow: 5px 5px 50px white;
+            }
+            #gallery .previous{
+                float: left;
+                display: inline;
+            }
+            audio{
+                margin-top: 300px;
+            }
+            #gallery .next{
+                float:right;
+                display: inline;
+            }
+            .wrap{
+                margin-left:370px;
+                margin-top:50px;
+                border:none;
+                overflow: hidden;
+                position:relative;
+                box-shadow: 5px 5px 20px white;
+            }
+            .wrap #gallery{
+                clear:both; 
+                overflow: hidden;
+                position:absolute;
+                display:block; 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap"><div id="gallery">
+        <div id="aud1"><a style="margin-top:20px" class="previous" href="#aud10"><button>&lt;</button></a>love today<audio controls>love today<source src="Ennai-Vittu-MassTamilan.dev.mp3" ></audio><a class="next" href="#aud2"><button>&gt;</button></a></div>
+        <div id="aud2"><a style="margin-top:20px" class="previous" href="#aud1"><button>&lt;</button></a>Mannipaaya<audio controls><source src="Mannipaaya.mp3" ></audio><a class="next" href="#aud3"><button>&gt;</button></a></div>
+        <div id="aud3"><a style="margin-top:20px" class="previous" href="#aud2"><button>&lt;</button></a>Anbil-Avan<audio controls><source src="Anbil-Avan.mp3" ></audio><a class="next" href="#aud4"><button>&gt;</button></a></div>
+        <div id="aud4"><a style="margin-top:20px" class="previous" href="#aud3"><button>&lt;</button></a>Nee-Nenacha<audio controls><source src="Nee-Nenacha-MassTamilan.org.mp3" ></audio><a class="next" href="#aud5"><button>&gt;</button></a></div>
+        <div id="aud5"><a style="margin-top:20px" class="previous" href="#aud4"><button>&lt;</button></a>Alaipayuthey BGM<audio controls><source src="Alaipayuthey - BGM.mp3" ></audio><a class="next" href="#aud6"><button>&gt;</button></a></div>
+        <div id="aud6"><a style="margin-top:20px" class="previous" href="#aud5"><button>&lt;</button></a>perfect<audio controls><source src="Perfect.mp3" ></audio><a class="next" href="#aud7"><button>&gt;</button></a></div>
+        <div id="aud7"><a style="margin-top:20px" class="previous" href="#aud6"><button>&lt;</button></a>Omana-Penne<audio controls><source src="Omana-Penne.mp3" ></audio><a class="next" href="#aud8"><button>&gt;</button></a></div>
+        <div id="aud8"><a style="margin-top:20px" class="previous" href="#aud7"><button>&lt;</button></a>Until-I-Found-You<audio controls><source src="Until-I-Found-You(PagalWorld).mp3" ></audio><a class="next" href="#aud9"><button>&gt;</button></a></div>
+        <div id="aud9"><a style="margin-top:20px" class="previous" href="#aud8"><button>&lt;</button></a>Vinnaithaandi-Varuvaaya<audio controls><source src="Vinnaithaandi-Varuvaaya.mp3" ></audio><a class="next" href="#aud10"><button>&gt;</button></a></div>
+       <div id="aud10"><a style="margin-top:20px" class="previous" href="#aud9"><button>&lt;</button></a>mondler<audio controls><source src="mond.mp3" ></audio><a class="next" href="#aud1"><button>&gt;</button></a></div>
+    </div></div>
+    </body>
+</html>

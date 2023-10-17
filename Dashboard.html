@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>
+            Admin Dashboard
+        </title>
+        <link rel="icon" href="icons8-infinity-96.png" type="icon">
+    </head>
+    <style>
+        html{
+            text-transform: uppercase;
+        }
+        h2{
+            text-transform: uppercase;
+            padding: 40px;    
+            text-align: center;
+            background-color:#94A684;
+            width:100%;
+            color:white;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input{
+            padding:10px;
+            width:50%;
+            margin-bottom: 14px;
+            border:none;
+            box-shadow: 1px 1px 10px grey;
+            border-radius: 10px;
+        }
+        input::placeholder{
+            color:#94A684;
+            text-transform: uppercase;
+        }input:focus{
+            background-color: #94A684;
+            color:white;
+        }
+        button{
+            padding:30px;
+            padding-top: 15px;
+            padding-bottom: 15px;;
+            background-color:#94A684 ;
+            color:white;
+            border:none;
+            border-radius: 10px;
+            margin-left: 14px;
+            margin-right: 14px;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-top: 20px;
+            margin-bottom:15px;;
+        }      
+        button:hover{
+            background-color: #AEC3AE;
+        }
+        div{
+            margin-left: 500px;
+        }  
+    </style>
+    <script>
+        function view(){
+            name=localStorage["name"];
+            mail=localStorage["mail"];
+            window.document.getElementById("Name").value=name;
+            window.document.getElementById("Mail").value=mail;
+        }
+        function home(){
+            window.open("eweb.html","_self")
+        }
+    </script>
+    <body>
+        <h2>My Profile / Dashboard</h2><center><button onclick="view()">view</button><button>edit</button><button onclick="home()">home</button></center><br><br>
+        <div>
+            <label>Name : </label><br><br><input type="text" id="Name"><br>
+            <label>User Id : </label><br><br><input  type="text" id="user id"><br>
+            <label>Email id : </label><br><br><input  type="mail" id="Mail"><br>
+            <label>Mobile number : </label><br><br><input  type="number" id="mobile"><br>
+            <label>Date of Birth : </label><br><br><input  type="date" id="date"><br>
+            
+        </div>
+    </body>
+</html>

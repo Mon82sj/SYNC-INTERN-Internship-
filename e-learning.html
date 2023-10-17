@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>SIGN-UP</title>
+        <link rel="icon" href="icons8-infinity-96.png" type="image/x-icon">
+    </head>
+    <script>
+        function clicked(){
+            window.document.getElementById("mail");
+            window.document.getElementById("pwd");
+            var name=window.document.getElementById("name").value;
+            var mail=window.document.getElementById("mail").value;
+            localStorage["name"]=name;
+            localStorage["mail"]=mail;
+            
+            window.document.getElementById("wish").innerHTML="Welcome "+name+" to Infinity Learning";
+            window.open("eweb.html" , "_self");
+        }
+    </script>
+    <style>
+        html{
+            background-color: #FFEEF4;
+            color:white;
+        }
+        p{
+            color:#94A684;
+            font-size: larger;
+            padding:15px;
+            text-align: center;
+            text-shadow: 2px 2px 10px grey;
+        }
+        div:not(#sign){
+            background-color: #AEC3AE;
+            margin-top:50px;
+            width:500px;
+            height:400px;
+            box-shadow: 3px 3px 10px grey;
+            border:none;
+            border-radius: 50px;
+        }
+        #sign{
+            margin-top: 50px;
+            font-weight: bold;
+            font-size: large;
+            text-shadow: 2px 2px 10px grey;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        button{
+            padding:30px;
+            padding-top: 15px;
+            padding-bottom: 15px;;
+            background-color:#94A684 ;
+            color:white;
+            border:none;
+            border-radius: 10px;
+            margin-left: 14px;
+            margin-right: 14px;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-top: 20px;
+            margin-bottom: 20px;;
+        }
+        input{
+            padding:10px;
+            width:70%;
+            margin-bottom: 14px;
+            border:none;
+            box-shadow: 1px 1px 10px grey;
+            border-radius: 10px;
+        }
+        input::placeholder{
+            color:#94A684;
+            text-transform: uppercase;
+        }input:focus{
+            background-color: #94A684;
+            color:white;
+        }
+    </style>
+    <body><center>
+        <div>    
+            <div id="sign"><br><br><img  src="sign-in.png"><br>sign-in<br></div>
+            <form action="eweb.html">
+            <input id="name" placeholder="Enter your Full name" type="text"><br>
+            <input id="mail" placeholder="Enter your Email " type="email"><br>
+            <input id="pwd" placeholder="Enter your password" type="password"><br>
+            <table><tr><td><button onclick="clicked()">Login</button><button onclick="clicked()">Sign-up</button></form></td></tr></table>
+        </div></center>
+
+        <p id="wish"></p><br>
+    </body>
+</html>

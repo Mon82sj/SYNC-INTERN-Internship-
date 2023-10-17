@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>upload you document</title>
+        <link rel="icon" href="icons8-infinity-96.png" type="icon">
+    </head>
+    <style>
+        html{
+            overflow-x: hidden;
+        }
+        #up1,#up2,#up3{
+            width:50%;
+            height:150px;
+            margin-left: auto;
+            margin-right:auto;
+            background-color:#94A684;
+        }
+        input{
+            padding:20px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        input::placeholder{
+            background-color: #AEC3AE;
+            color:white;
+            font-size: 20px;
+            text-transform: uppercase;
+        }.div1{
+            text-transform: uppercase;
+            padding: 40px;    
+            text-align: center;
+            background-color:#94A684;
+            width:100%;
+            color:white;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-x:hidden;
+        }
+        h3,h1,table{
+            text-transform: uppercase;
+            padding: 20px;    
+            text-align: left;
+            background-color:#94a684;
+            overflow-x: hidden;
+            width:100%;
+            color:white;
+            box-shadow: 4px 4px 20px grey;
+            overflow-x: hidden;
+            text-shadow: 4px 4px 10px grey;
+        }        
+        button{
+            padding:30px;
+            padding-top: 15px;
+            padding-bottom: 15px;;
+            background-color:#94A684 ;
+            color:white;
+            border:none;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-top: 20px;
+            margin-bottom:15px;;
+        }      
+        button:hover{
+            background-color: #AEC3AE;
+        }
+    </style>
+    <script>
+            function home(){
+            window.open("eweb.html","_self")
+        }
+        
+    </script>
+    <body>
+        <div class=".div1">
+            <table>
+                <tr>
+                    <td><button onclick="home()">home</button></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><h1><img src="icons8-upload-52.png" height="5%">UPload you documents here</h1></td>
+                </tr>
+            </table>
+        </div>
+        <div id="up1"><h3>upload notes</h3><input type="file" placeholder="mon"></div><br>
+        <div id="up2"><h3>upload answers</h3><input type="file" placeholder="mon"></div><br>
+        <div id="up3"><h3>upload questions</h3><input type="file" placeholder="mon"></div><br>
+    </body>
+</html>

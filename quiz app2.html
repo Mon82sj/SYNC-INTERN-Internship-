@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Make Quizes</title>
+        <body><div class="quiz-box">
+                <div class="QUIZ-APP"><h1>HTML CSS AND JS QUIZZES</h1></div>
+                <div id="quiz"></div>
+                <div id="result" class="result"></div>
+                <button id="submit" class="button">Submit</button>
+                <button id="retry" class="button hide">Retry</button>
+                <button id="showAnswer" class="button hide">Show Answer</button></div>
+        </body>
+        <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Croissant+One&family=Dancing+Script:wght@400;500&family=Great+Vibes&family=Josefin+Sans:wght@300&family=Quicksand:wght@500&family=Raleway:wght@300&family=Roboto+Condensed:wght@300&family=Tilt+Prism&display=swap');
+        
+        body {
+
+            font-family: 'Raleway', sans-serif;
+          background: White;
+          display: flex;
+          justify-content: center;
+        }
+        .QUIZ-APP{
+            background-image: linear-gradient(to right,#C22ed0,#5ffae0);
+            -webkit-background-clip:text;
+            background-clip: text;
+            color:transparent;
+        }
+        .quiz-box{
+            margin-top: 35px;
+        }
+        h1 {
+          text-align: center;
+        }
+        .question {
+          font-weight: bold;
+          margin-bottom: 10px;
+          padding:35px;
+          color :white;
+          margin-left: auto;
+          margin-right: auto;
+          font-size: larger;
+          background-image:linear-gradient(to right,#C22ed0,#5ffae0);
+        }
+        
+        .options {
+          margin-bottom: 20px;
+        }
+        
+        .option {
+          display: block;
+          background-image:linear-gradient(to right,#C22ed0,#5ffae0);
+          margin-bottom: 10px;
+          padding: 20px;
+          width:500px;
+          color:white;
+        }
+        
+        .button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-image: linear-gradient(to right,#C22ed0,#5ffae0);
+          color:white;
+          font-weight: bold;
+          border: none;
+          margin-left: 235px;
+          cursor: pointer;
+          font-size: 16px;
+          border-radius: 8px;
+          transition: background-color 0.3s;
+        }
+        .button:hover {
+            box-shadow: 3px 4px 10px grey;
+            border-radius: 8px;
+            background-color: white;
+        }
+        
+        .result {
+          text-align: center;
+          margin-top: 20px;
+          font-weight: bold;
+        }
+        
+        .hide{
+          display: none;
+        }
+        </style>
+        <script>
+          const quizData = [
+  {
+    question: 'What does HTML stand for?',
+    options: ['Hyper Text Markup Language', 'Highly Technical Markup Language', 'Hyperlink and Text Markup Language', 'Home Tool Markup Language'],
+    answer: 'Hyper Text Markup Language',
+  },
+  {
+    question: 'Which programming language is often used for web development?',
+    options: ['Java', 'Python', 'C++', 'JavaScript'],
+    answer: 'JavaScript',
+  },
+  {
+    question: 'What is the purpose of CSS in web development?',
+    options: ['Creating databases', 'Styling web pages', 'Writing server-side code', 'Managing user authentication'],
+    answer: 'Styling web pages',
+  },
+  {
+    question: 'Which of the following is a version control system?',
+    options: ['Microsoft Word', 'GitHub', 'Google Chrome', 'Adobe Photoshop'],
+    answer: 'GitHub',
+  },
+  {
+    question: 'What is the output of the following code in Python?\n\nprint(2 + 3 * 4)',
+    options: ['29', '14', '20', '35'],
+    answer: '14',
+  },
+  {
+    question: 'What is the most popular programming language for creating web applications?',
+    options: ['Java', 'Python', 'Ruby', 'JavaScript'],
+    answer: 'JavaScript',
+  },
+  {
+    question: 'In programming, what is the purpose of a "for loop"?',
+    options: ['To store data', 'To make decisions', 'To repeat a set of instructions', 'To define a function'],
+    answer: 'To repeat a set of instructions',
+  },
+  {
+    question: 'Which symbol is used to comment a single line in most programming languages?',
+    options: ['//', '/*', '--', '##'],
+    answer: '//',
+  },
+  {
+    question: 'What does CSS stand for?',
+    options: ['Cascading Style Sheet', 'Creative Style Selector', 'Computer Style System', 'Colorful Style Script'],
+    answer: 'Cascading Style Sheet',
+  },
+  {
+    question: 'Which of the following is not a programming language?',
+    options: ['Java', 'Python', 'HTML', 'C++'],
+    answer: 'HTML',
+  },
+  // Add more programming-related questions here
+];
+const quizContainer = document.getElementById('quiz');
+const resultContainer = document.getElementById('result');
+const submitButton = document.getElementById('submit');
+const retryButton = document.getElementById('retry');
+const showAnswerButton = document.getElementById('showAnswer');
+
+let currentQuestion = 0;
+let score = 0;
+let incorrectAnswers = [];
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function displayQuestion() {
+  const questionData = quizData[currentQuestion];
+
+  const questionElement = document.createElement('div');
+  questionElement.className = 'question';
+  questionElement.innerHTML = questionData.question;
+
+  const optionsElement = document.createElement('div');
+  optionsElement.className = 'options';
+
+  const shuffledOptions = [...questionData.options];
+  shuffleArray(shuffledOptions);
+
+  for (let i = 0; i < shuffledOptions.length; i++) {
+    const option = document.createElement('label');
+    option.className = 'option';
+
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'quiz';
+    radio.value = shuffledOptions[i];
+
+    const optionText = document.createTextNode(shuffledOptions[i]);
+
+    option.appendChild(radio);
+    option.appendChild(optionText);
+    optionsElement.appendChild(option);
+  }
+
+  quizContainer.innerHTML = '';
+  quizContainer.appendChild(questionElement);
+  quizContainer.appendChild(optionsElement);
+}
+
+function checkAnswer() {
+  const selectedOption = document.querySelector('input[name="quiz"]:checked');
+  if (selectedOption) {
+    const answer = selectedOption.value;
+    if (answer === quizData[currentQuestion].answer) {
+      score++;
+    } else {
+      incorrectAnswers.push({
+        question: quizData[currentQuestion].question,
+        incorrectAnswer: answer,
+        correctAnswer: quizData[currentQuestion].answer,
+      });
+    }
+    currentQuestion++;
+    selectedOption.checked = false;
+    if (currentQuestion < quizData.length) {
+      displayQuestion();
+    } else {
+      displayResult();
+    }
+  }
+}
+
+function displayResult() {
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = 'inline-block';
+  resultContainer.innerHTML = `You scored ${score} out of ${quizData.length}!`;
+}
+
+function retryQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  incorrectAnswers = [];
+  quizContainer.style.display = 'block';
+  submitButton.style.display = 'inline-block';
+  retryButton.style.display = 'none';
+  showAnswerButton.style.display = 'none';
+  resultContainer.innerHTML = '';
+  displayQuestion();
+}
+
+function showAnswer() {
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = 'none';
+
+  let incorrectAnswersHtml = '';
+  for (let i = 0; i < incorrectAnswers.length; i++) {
+    incorrectAnswersHtml += `
+      <p>
+        <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
+        <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
+        <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
+      </p>
+    `;
+  }
+
+  resultContainer.innerHTML = `
+    <p>You scored ${score} out of ${quizData.length}!</p>
+    <p>Incorrect Answers:</p>
+    ${incorrectAnswersHtml}
+  `;
+}
+if(score < 5){
+    '<p> Oh bad , You failed the quiz try again</p>'
+}
+else{
+    '<p>Fantastic , You passed the quiz </p>'
+}
+submitButton.addEventListener('click', checkAnswer);
+retryButton.addEventListener('click', retryQuiz);
+showAnswerButton.addEventListener('click', showAnswer);
+
+displayQuestion();
+        </script>
+    </body>
+</html>
